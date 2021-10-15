@@ -1,0 +1,128 @@
+---
+title:  <span style="font-size:80%"> Minería de datos de Twitter para analizar eventos políticos y movimientos sociales </span>
+author: |
+    | 
+    |  <small> <span style="color:#ada9a7"> Daniela de los Santos </small> </span> 
+date: <span style="color:#ada9a7; font-weight:400; font-size:45%">6 de julio de 2021 </span>
+output:
+  revealjs::revealjs_presentation:
+    background_transition: zoom
+    incremental: true
+    center: true
+    transition: slide
+    theme: simple
+    self_contained: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Para empezar, necesitaremos hacernos amigas de la API de Twitter.
+
+## ¿Qué permite hacer la API de Twitter?
+
+- Poder acceder masivamente a información sobre:
+- Tweets
+- Usuarios
+- DMs
+- Tendencias
+- Listas
+- Lugares
+- Multimedia
+
+## **Limitaciones**
+
+- Se puede acceder gratuitamente a tuits que tienen hasta una semana de antiguedad.
+- Para acceder a tweets de "archivo", se pueden utilizar bùsquedas históricas, pero habrá que activar una opción especial en nuestro dashboard de desarrolladoras, y pagar.
+
+# <span style="color:#fffbfd"> Pasos iniciales para scrapear datos de Twitter </span> {data-background=#8c3cc9}
+
+## El primer paso es contar con una cuenta de "desarrollador" (developer) en Twitter.
+
+- (Esto no es tan difícil como parece)
+
+## Antes que nada, obviamente, hay que tener una cuenta de Twitter
+```{r}
+knitr::include_graphics("img/img 1.png")
+```
+<small> Pueden crear una cuenta en [Twitter](https://twitter.com) o loguearse con una cuenta que ya tengan. </small>
+
+## Luego hay que aplicar para una cuenta de Developer.
+```{r,  out.width="80%"}
+knitr::include_graphics("img/img 2.png")
+```
+<small> En este link: https://developer.twitter.com/en, dar click en Apply para empezar el proceso. </small>
+
+## 
+```{r,  out.width="80%"}
+knitr::include_graphics("img/img 3.png")
+```
+
+<small> En la página siguiente, clic en "Apply for a Developer account" </small> 
+
+## Twitter les pedirá que especifiquen el propósito para el que quieren una cuenta desarrollador.
+```{r,  out.width="70%"}
+knitr::include_graphics("img/img 4.png")
+```
+<small> Yo suelo marcar "Academic Research". Los propósitos "Hobbyist", "Academic" y "Other" son los de uso individual. </small> 
+
+## De hecho, lo próximo que tienen que marcar es si la cuenta es para uso individual o para equipos (empresas, organizaciones, etc.)
+```{r,  out.width="70%"}
+knitr::include_graphics("img/img 5.jpeg")
+```
+<small>Si eligen uso profesional y cuenta para equipos, tendrán que especificar información sobre su empresa u organización.</small>
+
+## Especificación del 'intended use'
+```{r,  out.width="70%"}
+knitr::include_graphics("img/img 5.5.png")
+```
+<small> Tendrán que escribir brevemente en inglés qué es lo que quieren hacer. En este punto, hay que ser específico, porque esta será la parte que Twitter va a leer y "evaluar" para ver si les dan acceso </small>
+
+## Por último, revisen su aplicación, confirmen, y a esperar!
+
+- Una vez que submitean su aplicación, no pueden editarla, por eso es importante revisarla.
+- Usualmente toma 1 o 2 días (a veces más) para que su aplicación sea revisada por Twitter.
+
+## Unos días después, recibirán un email de Twitter, que puede decir una de tres cosas:
+
+- ✅ Approved developer account
+- ❌ Application rejected
+- 🔶 Review - review your application since it violates one or more sections of their policies.
+
+## ¿Qué pasa después?
+
+- Si su aplicación fue aprobada, ¡felicitaciones! 🎉 Ya pueden comenzar a scrapear datos de Twitter.
+- Si su aplicación fue rechazada... Habrá que probar de nuevo 🙁 Twitter no da explicaciones de por qué las aplicaciones son rechazadas.
+
+# <span style="color:#fffbfd"> Cuando logren setear sus cuentas, verán algo así 👇</span> {data-background=#8c3cc9}
+
+## Dashboard donde se "activan" las "apps" que usaremos para scrapear.
+```{r,  out.width="100%"}
+knitr::include_graphics("img/img 7.png")
+```
+
+## Hay varias formas de comenzar a trabajar
+```{r,  out.width="90%"}
+knitr::include_graphics("img/img 8.png")
+```
+<small> Por ejemplo, lo que yo hago es hacer clic en **"Projects and Apps"**, y luego scrollear hacia el final y crear una **"Standalone App"**.</small>
+
+## Nos van a pedir que nombremos esta app que estamos creando.
+```{r,  out.width="90%"}
+knitr::include_graphics("img/img 9.png")
+```
+<small> La app nos va a permitir acceder a nuestros datos de Twitter. Es nuestra "intermediaria" entre R y Twitter.</small>
+
+## <span style="color:#fffbfd"> Y luego, ¡ya está! 🤸 </span> {data-background=#8c3cc9}
+
+## Nos van a mostrar nuestros **"keys"** y **"tokens"**, y esto lo que necesitaremos para scrapear datos desde **R**
+```{r,  out.width="60%"}
+knitr::include_graphics("img/img 10.png")
+```
+
+## Cuando tengamos configurada la app, tendremos que también generar **"Access token and Secret"**.
+```{r,  out.width="90%"}
+knitr::include_graphics("img/img 11.png")
+```
+<small> Los copiamos y los dejamos a mano, y ¡a codificar!. Recuerden **no compartir keys y tokens de su app** cuando comparten código.
