@@ -24,8 +24,8 @@ library(rtweet)
 ## Aquí pongo unos míos de ejemplo para utilizar en el taller, pero que voy a resetear 
 ## después de terminar.
 
-key= "7e1wDsU90EZyTsCSoNjqcGMNg"
-secret= "EVJgLkYugIcSdKJEEu40T3fmrnC5jkpPmDyqpHheYJxGk6uMfu"
+key= ""
+secret= ""
 appname <- "Ejemplo_RladiesGua"
 
 access_token = "155965570-Y1UlDtE7A1cgl3vTGX2XbOwPEBIZmxPGZyQXmVpB"
