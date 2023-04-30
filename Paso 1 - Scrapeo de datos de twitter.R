@@ -28,8 +28,8 @@ key= ""
 secret= ""
 appname <- "Ejemplo_RladiesGua"
 
-access_token = "155965570-Y1UlDtE7A1cgl3vTGX2XbOwPEBIZmxPGZyQXmVpB"
-access_secret= "RBuvJsUTDYFpl2iw6qafO4Fk9xkOrRcLSpd5PXixWdgEB"
+access_token = ""
+access_secret= ""
 
 # Creamos un token con todos estos datos, que utiliza el paquete rtweet.
 twitter_token <- create_token(
